@@ -13,6 +13,11 @@ class PhotosController < ApplicationController
 		end	
 	end
 
+	def new_multiple
+		@photos = Photo.order('created_at DESC')
+		@photo = Photo.new
+	end
+
 	def photo_params
 		params.require(:photo).permit(:image, :title, :author)
 	end

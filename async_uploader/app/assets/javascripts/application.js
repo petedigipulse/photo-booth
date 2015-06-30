@@ -16,3 +16,4 @@
 //= require_tree .
 //= require bootstrap
 //= require jquery.remotipart
+//= require jquery-fileupload/basic
