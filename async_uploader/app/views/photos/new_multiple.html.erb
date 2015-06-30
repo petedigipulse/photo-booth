@@ -32,6 +32,31 @@
 		</div>
 	</div>
 <% end %>
+<h3>Upload multiple photos</h3>
+<div id="dropzone" class="fade">Drop files here</div>
+
+<%= form_for @photo do |f| %>
+	<div class="form-group">
+		<%= f.lable :author %>
+		<%= f.text_field :author, class: 'form-control' %>
+
+	<div>
+
+	<div class="form-group">
+		<%= f.label :image, 'Choose files here' %>
+		<%= f.file_field :image, required: true, multiple: true, name: 'photo<div class="entry-thumbnail" data-picture="" data-alt=""><img src="" alt=""></div>' %>
+	</div>
+
+	</div class="progress-wrapper"> 
+		<p>Bitrate: <span class="bitrate"></span></p>
+		<div class="progress">
+			<div class="progress-bar" role="progressbar">
+				0%
+			</div>
+		</div>
+	</div>
+<% end %>
+
 <script>
 	$(document).ready(function() {
 		// $('#new_photo').fileupload({datatype: 'script'});
@@ -57,18 +82,31 @@
 		wrapper.hide();
 		progress-bar.width(0); //Revert progress bars wodth back to 0 for future uploads
 	});
+
 	multiple_photos_form.on('fileuploadprogressall', function(e, data) {
 		var progress = parseInt(data.loaded / data.total * 100, 10); 
 		progress_bar.css('width', progress + '%').text(progress + '%');
 	});
 
-	var bitrate = wrapper.find('.bitrate');
+		var bitrate = wrapper.find('.bitrate');
 
 	multiple_photos_form.on('fileuploadprogressall', function(e, data) {
 		bitrate.text((data.bitrate / 1024).toFixed(2) + 'Kb/s');
 
 		var progress = parseInt(data.loaded / data.total * 100, 10);
 		progress_bar.css('width', progress + '%').text(progress + '%');
+	});
+
+	multiple_photos_form.fileupload({
+		datatype:'script', 
+		dropzone: $('#dropzone'),
+		add: function (e, data) {
+			types = /(\.|\/)(gif|jpe?g)|png|bmp)$/i;
+	file= data.files[0];
+	if (types.test(file.type) || types.test(file.name)) {
+		data.submit();
+	} else { alert(file.name + ' must be GIF, JPEG, BMP or PNG file'); }
+		}
 	});
 
 	});
