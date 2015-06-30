@@ -13,6 +13,15 @@
 
 	<div class="form-group">
 		<%= f.label :image %>
-		<%= f.file :image, required: true %>
+		<%= f.file_field :image, required: true, multiple: true, name: 'photo[image]' %>
 	</div>
 <% end %>
+<script>
+	$(document).ready(function() {
+		// $('#new_photo').fileupload({datatype: 'script'});
+		var multiple_photos_form = $('#new_photo'); 
+		multiple_photos_form.fileupload('fileuploadsubmit', function (e, data){
+			data.formData = {'photo[author]': $('#photo_author').val()};
+		});
+	});
+</script>
