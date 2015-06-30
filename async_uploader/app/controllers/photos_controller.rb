@@ -5,12 +5,15 @@ class PhotosController < ApplicationController
 	end
 
 	def create
-		@photo = Photo.new(photo_params)
-		@photo.save
-		redirect_to new_photo_path
+		respond_to do |format|	
+			@photo = Photo.new(photo_params)
+			@photo.save
+			format.html {redirect_to new_photo_path}
+			format.js
+		end	
 	end
 
 	def photo_params
-		params.require(:photo).permit(:image, :title)
+		params.require(:photo).permit(:image, :title, :author)
 	end
 end
