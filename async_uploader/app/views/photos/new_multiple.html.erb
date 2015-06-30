@@ -15,6 +15,14 @@
 		<%= f.label :image %>
 		<%= f.file_field :image, required: true, multiple: true, name: 'photo[image]' %>
 	</div>
+
+	<div class="progree-wrapper">
+		<div class="progress">
+			<div class="progress-bar" role="progressbar">	
+				0% 	
+			</div>
+		</div>
+	</div>
 <% end %>
 <script>
 	$(document).ready(function() {
@@ -24,4 +32,17 @@
 			data.formData = {'photo[author]': $('#photo_author').val()};
 		});
 	});
+	multiple_photos_form.fileupload({
+		datatype; 'script', 
+		add: function (e, data) {
+			types = /(\.|\/)(gif|jpe?g|png|bmp)$/i;
+			file = data.files[0]; 
+			if (types.test(file.type) || types.test(file.name)) {
+				data.submit();
+			} 
+			else {alert(file.name + " must be GIF, JPEG, BMP or PNG file")}
+		}
+	});
 </script>
+
+<!-- #Check if each file has correct formatm if yes submit using user submit -->
