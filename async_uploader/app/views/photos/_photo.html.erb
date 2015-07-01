@@ -1,5 +1,11 @@
 <li class="col-xs-3">
-	  <%= link_to image_tag(photo.image.thumb('180c180#')).url, alt: photo.author, class: 'img-thumbnail')
-		  photo.image.remote_url, target: '_blank' %>
-	  <p><%= photo.author %></p>
-</li> t
+	  <%= link_to image_tag(photo.image.thumb('180x180#').url, alt: photo.title, class: 'img-thumbnail'),
+		  	photo.image.remote_url, target: '_blank' %>
+	  <% if photo.title.present? %>
+	  	<p><%=photo.title%></p>
+	  <% end %>
+
+	  <% if photo.author.present? %>
+	  <p><b>Author:</b> <%= photo.author %></p>
+	  <% end %>
+</li> 
