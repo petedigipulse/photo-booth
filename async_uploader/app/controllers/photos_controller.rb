@@ -9,7 +9,7 @@ class PhotosController < ApplicationController
 			@photo = Photo.new(photo_params)
 			@photo.save
 			format.html {redirect_to new_photo_path}
-			format.js
+			format.js 
 		end	
 	end
 
