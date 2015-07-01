@@ -78,8 +78,10 @@ GEM
       sass (>= 3.3.0, < 3.5)
     compass-import-once (1.0.5)
       sass (>= 3.2, < 3.5)
-    compass-rails (2.0.1)
+    compass-rails (2.0.4)
       compass (~> 1.0.0)
+      sass-rails (<= 5.0.1)
+      sprockets (< 2.13)
     debug_inspector (0.0.2)
     dragonfly (1.0.10)
       addressable (~> 2.3)
@@ -113,6 +115,7 @@ GEM
     formatador (0.2.5)
     globalid (0.3.5)
       activesupport (>= 4.1.0)
+    hike (1.2.3)
     i18n (0.7.0)
     ipaddress (0.8.0)
     jbuilder (2.3.0)
@@ -173,7 +176,7 @@ GEM
       json (~> 1.4)
     remotipart (1.2.1)
     sass (3.4.15)
-    sass-rails (5.0.3)
+    sass-rails (5.0.1)
       railties (>= 4.0.0, < 5.0)
       sass (~> 3.1)
       sprockets (>= 2.8, < 4.0)
@@ -183,8 +186,11 @@ GEM
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
     spring (1.3.6)
-    sprockets (3.2.0)
+    sprockets (2.12.4)
+      hike (~> 1.2)
+      multi_json (~> 1.0)
       rack (~> 1.0)
+      tilt (~> 1.1, != 1.3.0)
     sprockets-rails (2.3.2)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
@@ -213,8 +219,8 @@ DEPENDENCIES
   bootstrap-sass
   byebug
   coffee-rails (~> 4.1.0)
-  compass
-  compass-rails
+  compass (= 1.0.3)
+  compass-rails (= 2.0.4)
   dragonfly
   dragonfly-s3_data_store
   jbuilder (~> 2.0)
@@ -223,7 +229,7 @@ DEPENDENCIES
   rack-cache
   rails (= 4.2.1)
   remotipart (~> 1.2)
-  sass-rails (~> 5.0)
+  sass-rails (= 5.0.1)
   sdoc (~> 0.4.0)
   spring
   sqlite3
